@@ -20,7 +20,7 @@ public class Tienda {
     int zapatos = 150;
     int consumible = 100;
     int compras;
-    int cash = 1000;
+    int cash = 2000;
     
     
     
