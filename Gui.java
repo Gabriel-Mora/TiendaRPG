@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -18,6 +13,12 @@ public class gui extends javax.swing.JFrame {
     int plata= armamento.cash;
     int atacar=jugador.Ataque;
     int opc;
+    int equipCas;
+    int equipPech;
+    int equipPant;
+    int equipZap;
+    int equipConsu;
+    
 
     /**
      * Creates new form gui
@@ -832,11 +833,10 @@ public class gui extends javax.swing.JFrame {
             ataque.setText("50");
             Escudo.setText("0");
             Armadura2.setText("0");
-            jugador.Escudo=0;
             jugador.Escudo2=jugador.Escudo2+50;
             Escudo.setText(String.valueOf(jugador.Escudo2));
-            if (jugador.Escudo2>=100){
-                     Escudo.setText(String.valueOf("100"));
+            if (jugador.Escudo2>=50){
+                     Escudo.setText(String.valueOf("50"));
                 }
         }
 
@@ -846,8 +846,9 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (Espada.isSelected()){
-            ataque1.setText("50");
-            if (invent.espada>0){
+            
+            
+            if (invent.espada>0 ){
                 jugador.Ataque=50;
                 jugador.Ataque=jugador.Ataque+30;
                 ataque1.setText(String.valueOf(jugador.Ataque));
@@ -855,23 +856,22 @@ public class gui extends javax.swing.JFrame {
                 
             }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para Equiparselo");
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para Equiparselo o ya lo tiene equipado");
             }
 
         }
         if (Hacha.isSelected()){
-            ataque1.setText("50");
+            
             if (invent.hacha>0){
                 jugador.Ataque=50;
                 jugador.Ataque=jugador.Ataque+15;
                 ataque1.setText(String.valueOf(jugador.Ataque));
             }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo");
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo o ya lo tiene equipado");
             }
         }
         if (Arco.isSelected()){
-            ataque1.setText("50");
             if(invent.arco>0){
                 
                 jugador.Ataque=50;
@@ -879,12 +879,15 @@ public class gui extends javax.swing.JFrame {
                 ataque1.setText(String.valueOf(jugador.Ataque));
             }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo");
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo o ya lo tiene equipado");
             }
         }
         if (Casco.isSelected()){
             ataque1.setText("50");
             if (invent.casco>0){
+                equipCas++;
+            }
+            if (invent.casco>0 && equipCas==1){
                 
                 jugador.Armadura=jugador.Armadura+25;
                 jugador.Armadura2=jugador.Armadura;
@@ -897,12 +900,16 @@ public class gui extends javax.swing.JFrame {
                 }
             }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para equiparlo");
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para equiparlo o ya lo tiene equipado");
             }
         }
         if (Pecho.isSelected()){
-            System.out.println(invent.pecho);        
-            if(invent.pecho>0){
+            System.out.println(invent.pecho); 
+            if (invent.pecho>0){
+                equipPech++;
+            }
+            
+            if(invent.pecho>0 && equipPech==1){
                 jugador.Armadura2=jugador.Armadura;
                 jugador.Armadura=jugador.Armadura+30;
                 jugador.Armadura2=jugador.Armadura;
@@ -914,11 +921,14 @@ public class gui extends javax.swing.JFrame {
                     }
                 }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para equiparlo");   
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para equiparlo o ya lo tiene equipado");   
                 }
         }
         if (Pantalones.isSelected()){
             if (invent.pantalon>0){
+                equipPant++;
+            }
+            if (invent.pantalon>0 && equipPant==1){
                 jugador.Armadura=jugador.Armadura+30;
                 Armadura1.setText(String.valueOf(jugador.Armadura));
                 jugador.Armadura2=jugador.Armadura;
@@ -928,12 +938,15 @@ public class gui extends javax.swing.JFrame {
                         }
             }
             else{
-                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo");
+                showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo o ya lo tiene equipado");
             }
             
         }
         if (Zapatos.isSelected()){
             if (invent.zapatos>0){
+                equipZap++;
+            }
+            if (invent.zapatos>0 && equipZap==1){
                 jugador.Armadura=jugador.Armadura+15;
                 Armadura1.setText(String.valueOf(jugador.Armadura));
                 jugador.Armadura2=jugador.Armadura;
@@ -948,6 +961,9 @@ public class gui extends javax.swing.JFrame {
         }
         if (Consumibles.isSelected()){
             if (invent.consumible>0){
+                equipConsu++;
+            }
+            if (invent.consumible>0 && equipConsu==1 ){
                 
                 jugador.Escudo=jugador.Escudo+50;
                 Escudo1.setText(String.valueOf(jugador.Escudo));
@@ -955,8 +971,15 @@ public class gui extends javax.swing.JFrame {
                 Escudo.setText(String.valueOf(jugador.Escudo2));
                  
                 if(jugador.Escudo>=100){
-                    Escudo1.setText(String.valueOf("100"));
+                    jugador.Escudo=100;
+                    
+                    Escudo1.setText(String.valueOf(jugador.Escudo));
                     }
+                if (jugador.Escudo2>=50);{
+                   
+                   Escudo.setText(String.valueOf("50"));
+                
+                }
             }
             else{
                 showMessageDialog(null, "Lo Siento usted no posee este articulo en su inventario para venderlo");
@@ -1007,7 +1030,9 @@ public class gui extends javax.swing.JFrame {
     private void VenderActionPerformed(java.awt.event.ActionEvent evt) {                                       
 
         if (Espada.isSelected()){
+            
             if (invent.espada>0){
+                
                 invent.espada=invent.espada -1;
                 invent.inventorio=invent.inventorio-1;
                 opc=armamento.espada;
@@ -1018,6 +1043,8 @@ public class gui extends javax.swing.JFrame {
                 if (jugador.Ataque>50){
                     jugador.Ataque=jugador.Ataque-30;
                     ataque1.setText(String.valueOf(jugador.Ataque));
+                    jugador.Ataque2=jugador.Ataque;
+                    ataque.setText(String.valueOf(jugador.Ataque2));
                 }
                 
                 
@@ -1029,7 +1056,9 @@ public class gui extends javax.swing.JFrame {
         }
 
         if (Arco.isSelected()){
+            
             if (invent.arco>0){
+                
                 invent.arco=invent.arco-1;
                 invent.inventorio=invent.inventorio-1;
                 opc=armamento.arco;
@@ -1041,6 +1070,9 @@ public class gui extends javax.swing.JFrame {
                 if (jugador.Ataque>50){
                     jugador.Ataque=jugador.Ataque-20;
                     ataque1.setText(String.valueOf(jugador.Ataque));
+                    jugador.Ataque2=jugador.Ataque;
+                    ataque.setText(String.valueOf(jugador.Ataque2));
+                    
                 }
             }
             else{
@@ -1048,7 +1080,9 @@ public class gui extends javax.swing.JFrame {
             }
         }
         if (Hacha.isSelected()){
+            
             if (invent.hacha>0){
+                
                 invent.inventorio=invent.inventorio -1 ;
                 invent.hacha=invent.hacha -1 ;
                 opc=armamento.hacha;
@@ -1059,7 +1093,10 @@ public class gui extends javax.swing.JFrame {
                 CantHacha.setText(String.valueOf(invent.hacha));
                 if (jugador.Ataque>50){
                     jugador.Ataque=jugador.Ataque-15;
+                    jugador.Ataque2=jugador.Ataque;
+                    ataque.setText(String.valueOf(jugador.Ataque2));
                     ataque1.setText(String.valueOf(jugador.Ataque));
+                    
                 }
             }
             else{
@@ -1067,7 +1104,9 @@ public class gui extends javax.swing.JFrame {
             }
         }
         if (Casco.isSelected()){
+            
             if (invent.casco>0){
+                equipCas--;
                 invent.casco=invent.casco -1;
                 invent.inventorio=invent.inventorio -1;
                 opc=armamento.casco;
@@ -1078,6 +1117,8 @@ public class gui extends javax.swing.JFrame {
                 if (jugador.Armadura>0){
                     jugador.Armadura=jugador.Armadura-25;
                     Armadura1.setText(String.valueOf(jugador.Armadura));
+                    jugador.Armadura2=jugador.Armadura;
+                    Armadura2.setText(String.valueOf(jugador.Armadura2));
                 }
             }
             else{
@@ -1085,7 +1126,9 @@ public class gui extends javax.swing.JFrame {
             }
         }
         if (Pecho.isSelected()){
+            
             if (invent.pecho>0){
+                equipPech--;
                 invent.pecho = invent.pecho -1;
                 invent.inventorio = invent.inventorio -1;
                 opc=armamento.pecho;
@@ -1096,6 +1139,8 @@ public class gui extends javax.swing.JFrame {
                 if (jugador.Armadura>0){
                     jugador.Armadura=jugador.Armadura-30;
                     Armadura1.setText(String.valueOf(jugador.Armadura));
+                    jugador.Armadura2=jugador.Armadura;
+                    Armadura2.setText(String.valueOf(jugador.Armadura2));
                 }
             }
             else{
@@ -1103,7 +1148,9 @@ public class gui extends javax.swing.JFrame {
             }
         }
         if (Pantalones.isSelected()){
+            
             if (invent.pantalon>0){
+                equipPant--;
                 invent.pantalon = invent.pantalon -1;
                 invent.inventorio = invent.inventorio -1;
                 opc=armamento.pantalon;
@@ -1114,6 +1161,8 @@ public class gui extends javax.swing.JFrame {
                 if (jugador.Armadura>0){
                     jugador.Armadura=jugador.Armadura-30;
                     Armadura1.setText(String.valueOf(jugador.Armadura));
+                    jugador.Armadura2=jugador.Armadura;
+                    Armadura2.setText(String.valueOf(jugador.Armadura2));
                 }
             }
             else{
@@ -1121,7 +1170,9 @@ public class gui extends javax.swing.JFrame {
             }
         }
         if (Zapatos.isSelected()){
+            
             if (invent.zapatos > 0){
+                equipZap--;
                 invent.zapatos = invent.zapatos -1;
                 invent.inventorio = invent.inventorio -1;
                 opc=armamento.zapatos;
@@ -1131,7 +1182,10 @@ public class gui extends javax.swing.JFrame {
                 CantZap.setText(String.valueOf(invent.zapatos));
                 if (jugador.Armadura>0){
                     jugador.Armadura=jugador.Armadura-15;
+                    jugador.Armadura2=jugador.Armadura;
+                    Armadura2.setText(String.valueOf(jugador.Armadura2));
                     Armadura1.setText(String.valueOf(jugador.Armadura));
+                     
                 }
             }
             else{
@@ -1140,6 +1194,7 @@ public class gui extends javax.swing.JFrame {
         }
         if (Consumibles.isSelected()){
             if (invent.consumible > 0){
+                equipConsu--;
                 invent.consumible = invent.consumible -1;
                 invent.inventorio = invent.inventorio -1;
                 opc=armamento.consumible;
@@ -1149,7 +1204,9 @@ public class gui extends javax.swing.JFrame {
                 CantConsu.setText(String.valueOf(invent.consumible));
                 if (jugador.Escudo>0){
                     jugador.Escudo=jugador.Escudo-50;
+                    jugador.Escudo2=jugador.Escudo;
                     Escudo1.setText(String.valueOf(jugador.Escudo));
+                    Escudo.setText(String.valueOf(jugador.Escudo2));
                 }
 
             }
@@ -1162,129 +1219,136 @@ public class gui extends javax.swing.JFrame {
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
-        if (Espada.isSelected()){
-            opc=armamento.espada;
-            if (plata>=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.espada=invent.espada+1;
+        
+        if (invent.inventorio<=7){
+            if (Espada.isSelected()){
+                opc=armamento.espada;
+                if (plata>=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.espada=invent.espada+1;
 
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantEsp.setText(String.valueOf(invent.espada));
-            }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantEsp.setText(String.valueOf(invent.espada));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
 
-            }
-
-        }
-        if (Arco.isSelected()){
-            opc=armamento.arco;
-            if (plata>=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.arco=invent.arco+1;
-
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantArc.setText(String.valueOf(invent.arco));
-            }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
-            }
-        }
-        if (Hacha.isSelected()){
-            opc=armamento.hacha;
-            if (plata>=opc){
-                invent.hacha=invent.hacha+1;
-                invent.inventorio=invent.inventorio+1;
-
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantHacha.setText(String.valueOf(invent.hacha));
-            }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
-            }
-        }
-        if (Casco.isSelected()){
-            opc=armamento.casco;
-            if (plata>=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.casco=invent.casco+1;
-
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantCas.setText(String.valueOf(invent.casco));
+                }
 
             }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
-            }
-        }
-        if (Pecho.isSelected()){
-            opc=armamento.pecho;
-            if (plata>=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.pecho=invent.pecho+1;
+            if (Arco.isSelected()){
+                opc=armamento.arco;
+                if (plata>=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.arco=invent.arco+1;
 
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantPech.setText(String.valueOf(invent.pecho));
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantArc.setText(String.valueOf(invent.arco));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
-            }
-        }
-        if (Pantalones.isSelected()){
-            opc=armamento.pantalon;
-            if (plata >=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.pantalon=invent.pantalon+1;
+            if (Hacha.isSelected()){
+                opc=armamento.hacha;
+                if (plata>=opc){
+                    invent.hacha=invent.hacha+1;
+                    invent.inventorio=invent.inventorio+1;
 
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantPant.setText(String.valueOf(invent.pantalon));
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantHacha.setText(String.valueOf(invent.hacha));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
-            }
-        }
-        if (Zapatos.isSelected()){
-            opc=armamento.zapatos;
-            if (plata >= opc){
+            if (Casco.isSelected()){
+                opc=armamento.casco;
+                if (plata>=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.casco=invent.casco+1;
 
-                invent.inventorio=invent.inventorio+1;
-                invent.zapatos=invent.zapatos+1;
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantCas.setText(String.valueOf(invent.casco));
 
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantZap.setText(String.valueOf(invent.zapatos));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+            if (Pecho.isSelected()){
+                opc=armamento.pecho;
+                if (plata>=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.pecho=invent.pecho+1;
+
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantPech.setText(String.valueOf(invent.pecho));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
-        }
-        if (Consumibles.isSelected()){
-            opc=armamento.consumible;
-            if (plata>=opc){
-                invent.inventorio=invent.inventorio+1;
-                invent.consumible=invent.consumible+1;
-                armamento.compra(opc);
-                plata=armamento.cash;
-                Cash.setText(String.valueOf(plata));
-                CantConsu.setText(String.valueOf(invent.consumible));
-                Escudo.setText(String.valueOf(jugador.Escudo2));
+            if (Pantalones.isSelected()){
+                opc=armamento.pantalon;
+                if (plata >=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.pantalon=invent.pantalon+1;
+
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantPant.setText(String.valueOf(invent.pantalon));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
-            else{
-                showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+            if (Zapatos.isSelected()){
+                opc=armamento.zapatos;
+                if (plata >= opc){
+
+                    invent.inventorio=invent.inventorio+1;
+                    invent.zapatos=invent.zapatos+1;
+
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantZap.setText(String.valueOf(invent.zapatos));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
             }
+            if (Consumibles.isSelected()){
+                opc=armamento.consumible;
+                if (plata>=opc){
+                    invent.inventorio=invent.inventorio+1;
+                    invent.consumible=invent.consumible+1;
+                    armamento.compra(opc);
+                    plata=armamento.cash;
+                    Cash.setText(String.valueOf(plata));
+                    CantConsu.setText(String.valueOf(invent.consumible));
+                    Escudo.setText(String.valueOf(jugador.Escudo2));
+                }
+                else{
+                    showMessageDialog(null, "Lo Siento, no tiene el dinero suficiente para ejecutar esta compra");
+                }
+            }
+            }
+        else{
+            showMessageDialog(null, "Lo Siento su inventario ya esta lleno.");
+            
         }
     }                                       
 
