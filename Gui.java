@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package main;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -206,7 +211,7 @@ public class gui extends javax.swing.JFrame {
         Cash.setBackground(new java.awt.Color(0, 0, 0));
         Cash.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         Cash.setForeground(new java.awt.Color(255, 255, 255));
-        Cash.setText("$1000");
+        Cash.setText("$2000");
         Cash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CashActionPerformed(evt);
