@@ -27,7 +27,7 @@ public class Tienda {
     
      public int compra(int a){
         
-        int compras;
+        
         compras= cash - a;
         cash=compras;
          System.out.println("Su dinero actual despues de la compra es: "+compras);
